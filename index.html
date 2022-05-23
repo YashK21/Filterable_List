@@ -12,7 +12,7 @@
         <h1 class="center-align">
             My Contacts
         </h1>
-        <input type="text" id="filter-input" placeholder="Search Here">
+        <input type="text" id="filter_input" placeholder="Search Here">
         <ul class="collection with-header" id="names">
             <!-- A -->
              <li class="collection-header">
@@ -69,5 +69,39 @@
 
         </ul>
     </div>
+    <script>
+    //get input element
+
+     let filter_input = document.getElementById("filter_input")
+        
+     //Adding event listner
+        filter_input.addEventListener("keyup",filterNames)
+        function filterNames()
+        {
+           //get value of inpuut
+           let filterValue = document.getElementById("filter_input").value.toUpperCase()
+            //get names ul
+            let ul = document.getElementById("names")
+            //get li from ul
+            let li = ul.querySelectorAll("li.collection-item")
+
+            //looping through the items
+            for(let i = 0;  i < li.length; i++)
+            {
+               let a = li[i].getElementsByTagName('a')[0]
+               //if matches
+               if(a.innerHTML.toUpperCase().indexOf(filterValue)>-1)
+               {
+                    li[i].style.display =  ''
+               }
+               else
+               {
+                    li[i].style.display = 'none'
+               }
+            }
+        
+        }
+
+    </script>
 </body>
 </html>
